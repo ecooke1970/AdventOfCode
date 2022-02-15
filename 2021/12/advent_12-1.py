@@ -1,5 +1,6 @@
 # Erik Cooke
 # Advent of Code 2021 12 part 1
+grid = []
 
 
 def print_grid():
@@ -13,8 +14,9 @@ if __name__ == "__main__":
     with open('code_input12.txt') as file:
         for line in file:
             x = line.strip().split("-")
-            print(x)
+            grid.append(x)
 
+    print_grid()
 
 
 
