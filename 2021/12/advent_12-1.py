@@ -12,7 +12,12 @@ def print_grid():
 
 def create_graph():
     for cave in grid:
-        caves[cave[0]] = [cave[1]]
+        print(cave[0], " ", cave[1])
+        if cave[0] in caves:
+            caves[cave[0]] += cave[1]
+        else:
+            caves[cave[0]] = []
+            caves[cave[0]] += cave[1]
 
     print(caves)
 
