@@ -14,12 +14,28 @@ def create_graph():
     for cave in grid:
         print(cave[0], " ", cave[1])
         if cave[0] in caves:
-            caves[cave[0]] += cave[1]
+            if cave[0] == 'end':
+                break
+            else:
+                caves[cave[0]].append(cave[1])
         else:
             caves[cave[0]] = []
-            caves[cave[0]] += cave[1]
+            caves[cave[0]].append(cave[1])
 
-    print(caves)
+        print(caves)
+
+        print(cave[0], " ", cave[1])
+        if cave[1] in caves:
+            if cave[1] == 'end' or cave[0] == 'start':
+                break
+            else:
+                caves[cave[1]].append(cave[0])
+        else:
+            caves[cave[1]] = []
+            caves[cave[1]].append(cave[0])
+
+        print(caves)
+        print()
 
 
 if __name__ == "__main__":
