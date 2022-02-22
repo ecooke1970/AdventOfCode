@@ -10,9 +10,14 @@ def print_grid():
     print()
 
 
+def print_caves():
+    for i, value in caves.items():
+        print(i, " ", value)
+
+
 def create_graph():
     for cave in grid:
-        print("Part 1 ", cave[0], " ", cave[1])
+        # print("Part 1 ", cave[0], " ", cave[1])
         if cave[0] == 'end' or cave[1] == 'start':
             continue
         elif cave[0] in caves:
@@ -21,9 +26,7 @@ def create_graph():
             caves[cave[0]] = []
             caves[cave[0]].append(cave[1])
 
-        print(caves)
-
-        print("Part 2 ", cave[0], " ", cave[1])
+        # print("Part 2 ", cave[0], " ", cave[1])
         if cave[1] == 'end' or cave[0] == 'start':
             continue
         elif cave[1] in caves:
@@ -31,9 +34,6 @@ def create_graph():
         else:
             caves[cave[1]] = []
             caves[cave[1]].append(cave[0])
-
-        print(caves)
-        print()
 
 
 if __name__ == "__main__":
@@ -45,6 +45,8 @@ if __name__ == "__main__":
 
     # print_grid()
     create_graph()
+    print_caves()
+    # find_paths()
 
 
 
