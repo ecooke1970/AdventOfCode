@@ -49,7 +49,7 @@ def create_graph():
     #     return paths
 
 
-def find_paths(s, e, path=[], dupe_small_cave=False):
+def find_paths(s, e, path=[], dupe_small_cave=0):
     # global caves
     path = path + [s]
     if s == e:
@@ -58,11 +58,12 @@ def find_paths(s, e, path=[], dupe_small_cave=False):
         return []
     paths = []
     for node in caves[s]:
-        if node.islower() and node in path and dupe_small_cave is False:
-            dupe_small_cave = True
+        if node.islower() and node in path and dupe_small_cave == 0:
+            dupe_small_cave += 1
             new_paths = find_paths(node, e, path, dupe_small_cave)
             for new_path in new_paths:
                 paths.append(new_path)
+
         elif node.isupper() or node not in path:
             new_paths = find_paths(node, e, path, dupe_small_cave)
             for new_path in new_paths:
