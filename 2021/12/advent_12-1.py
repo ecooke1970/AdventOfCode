@@ -11,6 +11,7 @@ def print_list(a):
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 def print_caves():
     for i, value in caves.items():
         print(f'{i:>5} - {value}')
@@ -18,6 +19,11 @@ def print_caves():
 
 def create_graph():
     for cave in grid:
+=======
+def create_graph():
+    for cave in grid:
+        print("Part 1 ", cave[0], " ", cave[1])
+>>>>>>> parent of bdb6fbb (Update advent_12-1.py)
 =======
 def create_graph():
     for cave in grid:
@@ -42,6 +48,7 @@ def create_graph():
             caves[cave[1]] = []
             caves[cave[1]].append(cave[0])
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     # def find_all_paths(graph, start, end, path=[]):
     #     path = path + [start]
@@ -81,6 +88,8 @@ def find_paths(s, e, path=[], dupe_small_cave=False):
 
 def main():
 =======
+=======
+>>>>>>> parent of bdb6fbb (Update advent_12-1.py)
         print(caves)
         print()
 
@@ -99,12 +108,15 @@ if __name__ == "__main__":
     print()
     create_graph()
 <<<<<<< HEAD
+<<<<<<< HEAD
     print_caves()
     print()
     all_paths = find_paths('start', 'end')
     print_list(all_paths)
     print("Number of paths = ", len(all_paths))
 =======
+=======
+>>>>>>> parent of bdb6fbb (Update advent_12-1.py)
 
 
 
