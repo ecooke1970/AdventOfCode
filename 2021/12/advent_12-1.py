@@ -10,6 +10,7 @@ def print_list(a):
     print()
 
 
+<<<<<<< HEAD
 def print_caves():
     for i, value in caves.items():
         print(f'{i:>5} - {value}')
@@ -17,6 +18,11 @@ def print_caves():
 
 def create_graph():
     for cave in grid:
+=======
+def create_graph():
+    for cave in grid:
+        print("Part 1 ", cave[0], " ", cave[1])
+>>>>>>> parent of bdb6fbb (Update advent_12-1.py)
         if cave[0] == 'end' or cave[1] == 'start':
             continue
         elif cave[0] in caves:
@@ -25,7 +31,9 @@ def create_graph():
             caves[cave[0]] = []
             caves[cave[0]].append(cave[1])
 
-        # print("Part 2 ", cave[0], " ", cave[1])
+        print(caves)
+
+        print("Part 2 ", cave[0], " ", cave[1])
         if cave[1] == 'end' or cave[0] == 'start':
             continue
         elif cave[1] in caves:
@@ -34,6 +42,7 @@ def create_graph():
             caves[cave[1]] = []
             caves[cave[1]].append(cave[0])
 
+<<<<<<< HEAD
     # def find_all_paths(graph, start, end, path=[]):
     #     path = path + [start]
     #     if start == end:
@@ -71,6 +80,13 @@ def find_paths(s, e, path=[], dupe_small_cave=False):
 
 
 def main():
+=======
+        print(caves)
+        print()
+
+
+if __name__ == "__main__":
+>>>>>>> parent of bdb6fbb (Update advent_12-1.py)
     # Open input file
     with open('code_input12.txt') as file:
         for line in file:
@@ -82,11 +98,20 @@ def main():
     print_list(grid)
     print()
     create_graph()
+<<<<<<< HEAD
     print_caves()
     print()
     all_paths = find_paths('start', 'end')
     print_list(all_paths)
     print("Number of paths = ", len(all_paths))
+=======
+
+
+
+
+
+
+>>>>>>> parent of bdb6fbb (Update advent_12-1.py)
 
 
 if __name__ == "__main__":
