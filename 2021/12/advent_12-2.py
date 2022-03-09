@@ -86,8 +86,9 @@ def main():
     print_caves()
     print()
     all_paths = find_paths('start', 'end')
+
     print_list(all_paths)
-    print("Number of paths = ", len(all_paths))
+    print(len(all_paths))
 
 
 if __name__ == "__main__":
