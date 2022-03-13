@@ -15,6 +15,14 @@ def print_caves():
         print(f'{i:>5} - {value}')
 
 
+def check_for_lower_dupes(path):
+    for cave in path:
+        if cave.lower() and path.count(cave) > 1:
+            return True
+
+    return False
+
+
 def create_graph():
     for cave in grid:
         if cave[0] == 'end' or cave[1] == 'start':
@@ -49,7 +57,7 @@ def create_graph():
     #     return paths
 
 
-def find_paths(s, e, path=[], dupe_small_cave=0):
+def find_paths(s, e, path=[]):
     # global caves
     path = path + [s]
     if s == e:
@@ -58,14 +66,12 @@ def find_paths(s, e, path=[], dupe_small_cave=0):
         return []
     paths = []
     for node in caves[s]:
-        if node.islower() and node in path and dupe_small_cave == 0:
-            dupe_small_cave += 1
-            new_paths = find_paths(node, e, path, dupe_small_cave)
+        if node.isupper() or node not in path:
+            new_paths = find_paths(node, e, path)
             for new_path in new_paths:
                 paths.append(new_path)
-
-        elif node.isupper() or node not in path:
-            new_paths = find_paths(node, e, path, dupe_small_cave)
+        elif not check_for_lower_dupes(path):
+            new_paths = find_paths(node, e, path)
             for new_path in new_paths:
                 paths.append(new_path)
     return paths
