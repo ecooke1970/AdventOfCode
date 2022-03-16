@@ -17,6 +17,29 @@ def print_caves():
         print(f'{i:>5} - {value}')
 
 
+def find_paths(start, end, can_twice, path=[]):
+    path = path + [start]
+    if start == end:
+        return [path]
+    if start not in caves:
+        return []
+    paths = []
+    for node in caves[start]:
+        if node.islower():
+            if start not in path:
+                new_paths = find_paths(node, end, can_twice, path)
+                for new_path in new_paths:
+                    paths.append(new_path)
+            elif can_twice and node not in {'start', 'end'}:
+                new_paths = find_paths(node, end, False, path)
+                for new_path in new_paths:
+                    paths.append(new_path)
+        else:
+            new_paths = find_paths(node, end, can_twice, path)
+            for new_path in new_paths:
+                paths.append(new_path)
+
+
 # def find_paths(s, e, path=[]):
 #     # global caves
 #     path = path + [s]
@@ -46,6 +69,10 @@ def main():
             caves[b].append(a)
 
     print_caves()
+
+    all_paths = find_paths('start', 'end', False)
+
+    print(len(all_paths))
 
     # print_list(grid)
     # print()
