@@ -26,7 +26,7 @@ def find_paths(start, end, can_twice, path=[]):
     paths = []
     for node in caves[start]:
         if node.islower():
-            if start not in path:
+            if node not in path:
                 new_paths = find_paths(node, end, can_twice, path)
                 for new_path in new_paths:
                     paths.append(new_path)
@@ -38,6 +38,7 @@ def find_paths(start, end, can_twice, path=[]):
             new_paths = find_paths(node, end, can_twice, path)
             for new_path in new_paths:
                 paths.append(new_path)
+    return paths
 
 
 # def find_paths(s, e, path=[]):
@@ -70,8 +71,8 @@ def main():
 
     print_caves()
 
-    all_paths = find_paths('start', 'end', False)
-
+    all_paths = find_paths('start', 'end', True)
+    print()
     print(len(all_paths))
 
     # print_list(grid)
