@@ -2,8 +2,8 @@
 # Advent of Code 2021 13 part 1
 from collections import defaultdict
 
-
-caves = defaultdict(list)
+coordinates = []
+flip = []
 
 
 def print_list(a):
@@ -12,16 +12,52 @@ def print_list(a):
     print()
 
 
-def print_caves():
-    for i, value in caves.items():
-        print(f'{i:>5} - {value}')
+def flip_page(flip_list, grid):
+    print(flip_list)
+    for i, j in flip_list:
+        if i == 'y':
+            print("Flip Y", j)
+            for y in range(len(grid)):
+                for x in range(len(grid[0])):
+                    if grid[y][x] == 1 and y > j:
+                        grid[y][x] = 0
+                        diff = j - (y - j)
+                        grid[diff][x] = 1
+                        print(diff)
+        else:
+            print("Flip X", j)
+
+
+
+def fill_grid(grid):
+    for x, y in coordinates:
+        grid[y][x] = 1
 
 
 def main():
     # Open input file
+    high_x, high_y = 0, 0
     with open('code_input13.txt') as file:
         for line in file:
-            pass
+            if ',' in line:
+                x, y = line.strip().split(',')
+                x, y = int(x), int(y)
+                high_x = x if x > high_x else high_x
+                high_y = y if y > high_y else high_y
+                coordinates.append([x, y])
+            elif 'fold' in line:
+                x = line.strip().split('=')
+                i = [x[0][-1], int(x[1])]
+                flip.append(i)
+
+    grid = [[0 for i in range(high_x + 1)] for j in range(high_y + 1)]
+    # arr = [[0 for i in range(cols)] for j in range(rows)]
+    fill_grid(grid)
+    # print(high_x, high_y)
+    print_list(grid)
+    # print_list(coordinates)
+    flip_page(flip, grid)
+    print_list(grid)
 
 
 if __name__ == "__main__":
