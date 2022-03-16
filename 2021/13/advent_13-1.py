@@ -26,12 +26,24 @@ def flip_page(flip_list, grid):
                         print(diff)
         else:
             print("Flip X", j)
-
+            for y in range(len(grid)):
+                for x in range(len(grid[0])):
+                    if grid[y][x] == 1 and x > j:
+                        grid[y][x] = 0
+                        diff = j - (x - j)
+                        grid[y][diff] = 1
 
 
 def fill_grid(grid):
     for x, y in coordinates:
         grid[y][x] = 1
+
+
+def count_grid(grid):
+    num = 0
+    for row in grid:
+        num += row.count(1)
+    return num
 
 
 def main():
@@ -58,6 +70,8 @@ def main():
     # print_list(coordinates)
     flip_page(flip, grid)
     print_list(grid)
+
+    print(count_grid(grid))
 
 
 if __name__ == "__main__":
