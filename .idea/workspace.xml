@@ -31,11 +31,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/2021/12" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/2021/13" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/2021/13" />
       <recent name="$PROJECT_DIR$/2021/12" />
       <recent name="C:\Users\user\Documents\Erik\github\AdventOfCode\2021\12" />
     </key>
