@@ -1,9 +1,9 @@
 # Erik Cooke
 # Advent of Code 2021 14 part 1
-from collections import defaultdict
-from collections import defaultdict
 
-ITERATIONS = 3
+from collections import Counter
+
+ITERATIONS = 40
 insert_rules = {}
 polymer = ""
 
@@ -11,13 +11,15 @@ polymer = ""
 def process_polymer():
     global polymer
     for i in range(ITERATIONS):
+        print(i, "BEGIN")
         new_code = polymer[0]
         for j in range(len(polymer) - 1):
             code = polymer[j:j+2]
             x = insert_rules[code]
             new_code += x + code[1]
         polymer = new_code
-        print(polymer)
+        print(i, "END")
+        # print(polymer)
 
 
 def main():
@@ -31,6 +33,11 @@ def main():
             insert_rules[x[0]] = x[1]
 
     process_polymer()
+    z = Counter(polymer)
+    # print(z)
+    values = z.values()
+    # print(values)
+    print(max(values) - min(values))
 
 
 if __name__ == "__main__":
