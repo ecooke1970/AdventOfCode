@@ -1,12 +1,16 @@
 # Erik Cooke
-# Advent of Code 2021 14 part 1
+# Advent of Code 2021 14 part 2
 
 from collections import Counter
 
-ITERATIONS = 10
+ITERATIONS = 40
 insert_rules = {}
 polymer = ""
 
+
+def polymer_pairs():
+    global polymer
+    new_polymer =
 
 def process_polymer():
     global polymer
@@ -32,6 +36,7 @@ def main():
             x = line.strip().split(" -> ")
             insert_rules[x[0]] = x[1]
 
+    polymer_pairs()
     process_polymer()
     z = Counter(polymer)
     # print(z)
