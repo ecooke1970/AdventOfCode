@@ -4,7 +4,7 @@
 from collections import Counter, defaultdict
 
 
-ITERATIONS = 10
+ITERATIONS = 2
 insert_rules = {}
 first_polymer = ""
 polymer = defaultdict(int)
