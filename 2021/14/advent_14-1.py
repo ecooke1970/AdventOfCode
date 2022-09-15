@@ -1,7 +1,7 @@
 # Erik Cooke
 # Advent of Code 2021 14 part 1
 
-from collections import Counter
+from collections import Counter, defaultdict
 
 ITERATIONS = 10
 insert_rules = {}
@@ -24,6 +24,7 @@ def process_polymer():
 
 def main():
     global polymer
+
     # Open input file
     with open('code_input14.txt') as file:
         polymer = file.readline().strip()
@@ -31,6 +32,7 @@ def main():
         for line in file:
             x = line.strip().split(" -> ")
             insert_rules[x[0]] = x[1]
+
 
     process_polymer()
     z = Counter(polymer)

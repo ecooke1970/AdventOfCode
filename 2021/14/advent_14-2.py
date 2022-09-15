@@ -17,8 +17,8 @@ def polymer_pairs():
         polymer[first_polymer[i] + first_polymer[i+1]]
         count_polymers[first_polymer[i]] += 1
     count_polymers[first_polymer[-1]] += 1
-    # print(polymer)
-    # print("Count: ", count_polymers)
+    print(polymer)
+    print("Count: ", count_polymers)
 
 
 def process_polymer():
@@ -59,6 +59,7 @@ def main():
 
     polymer_pairs()
     process_polymer()
+
     # count_letters()
     # z = Counter(new_polymer)
     # print(z)
