@@ -4,7 +4,7 @@
 from collections import Counter, defaultdict
 
 
-ITERATIONS = 2
+ITERATIONS = 40
 insert_rules = {}
 first_polymer = ""
 polymer = defaultdict(int)
@@ -12,39 +12,34 @@ count_polymers = defaultdict(int)
 
 
 def polymer_pairs():
-    global first_polymer, count_polymers
+    global first_polymer
     for i in range(len(first_polymer) - 1):
-        polymer[first_polymer[i] + first_polymer[i+1]]
+        polymer[first_polymer[i] + first_polymer[i+1]] += 1
         count_polymers[first_polymer[i]] += 1
     count_polymers[first_polymer[-1]] += 1
-    print(polymer)
-    print("Count: ", count_polymers)
 
 
 def process_polymer():
-    global polymer, count_polymers
+    global polymer
     for i in range(ITERATIONS):
+        # print(f"start: {i}")
         temp_polymer = defaultdict(int)
-        for item in polymer:
-            print("item:", item)
-            count_polymers[insert_rules[item]] += 1
-            print("count: ", count_polymers)
-
-            temp_polymer[item[0] + insert_rules[item]] += polymer[item] + 1
-            temp_polymer[insert_rules[item] + item[1]] += polymer[item] + 1
-        print("End")
+        for item, value in polymer.items():
+            # print("item:", item)
+            # count_polymers[insert_rules[item]] += 1
+            # print("count: ", count_polymers)
+            temp_polymer[item[0] + insert_rules[item]] += value
+            temp_polymer[insert_rules[item] + item[1]] += value
+            count_polymers[insert_rules[item]] += value
+        # print("End")
         polymer = temp_polymer
-        print("polymer:", polymer)
-    print(count_polymers)
+        # print(f"polymer: {polymer}")
+        # print()
 
 
-# def count_letters():
-#     global polymer
-#     count = defaultdict(int)
-#     for item in polymer:
-#         count[item[0]] += polymer.get(item)
-#         count[item[1]] += polymer.get(item)
-#     print(count)
+def print_count():
+    for key, value in count_polymers.items():
+        print(f"{key}: {value}")
 
 
 def main():
@@ -59,13 +54,9 @@ def main():
 
     polymer_pairs()
     process_polymer()
-
-    # count_letters()
-    # z = Counter(new_polymer)
-    # print(z)
-    # values = z.values()
-    # print(values)
-    # print(max(values) - min(values))
+    print_count()
+    totals = Counter(count_polymers).values()
+    print(f"Answer: {max(totals) - min(totals)}")
 
 
 if __name__ == "__main__":
