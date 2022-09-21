@@ -3,7 +3,7 @@
 import heapq
 
 grid = []
-start = '0, 0'
+start = '0,0'
 
 
 def dijkstra(adj, start, end):
@@ -17,7 +17,7 @@ def dijkstra(adj, start, end):
         if u == end:
             break
         visited.add(u)
-        for v, weight in adj[u]:
+        for v, weight in adj.items():
             if v not in d or d[v] > du + weight:
                 d[v] = du + weight
                 parent[v] = u
@@ -41,12 +41,14 @@ def main():
     for x, row in enumerate(grid):
         for y, col in enumerate(row):
             # print(f"{x}{y} col: {col}")
-            adj['str(x), str(y)'] = col
+            adj[f"{str(x)},{str(y)}"] = int(col)
 
     print(f"start = {start}, end = {end}")
+    print()
+    print(f"{adj}")
+    print()
 
-    print(dijkstra(adj, start, end))
-
+    # print(dijkstra(adj, start, end))
 
 
 if __name__ == "__main__":
