@@ -35,20 +35,31 @@ def main():
                 temp.append(num)
             grid.append(temp)
 
+    for row in grid:
+        print(row)
+
     end = (len(grid) - 1, len(grid[0]) - 1)
 
+    values = {}
     adj = {}
     for x, row in enumerate(grid):
         for y, col in enumerate(row):
             # print(f"{x}{y} col: {col}")
-            adj[f"{str(x)},{str(y)}"] = int(col)
+            values[f"{str(x)},{str(y)}"] = int(col)
 
     print(f"start = {start}, end = {end}")
     print()
-    print(f"{adj}")
+    print(f"{values}")
     print()
 
-    # print(dijkstra(adj, start, end))
+    for x in range(len(grid[0])):
+        for y in range(len(grid)):
+            adj[f"{x},{y}"] = [f"{x + i},{y + j}" for i, j in [(1, 0), (0, 1), (-1, 0), (0, -1)]
+                               if 0 <= x + i <= (len(grid[0])-1) and 0 <= y + j <= (len(grid)-1)]
+
+    print(adj)
+
+    print(dijkstra(adj, start, end))
 
 
 if __name__ == "__main__":
